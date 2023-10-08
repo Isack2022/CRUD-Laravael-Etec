@@ -1,12 +1,7 @@
 @extends('master')
 
-<div class="header">
-    <h2>Página de produtos</h2>
-</div>
-
-
 @section('content')
-
+   
 <ul>
     @foreach ($products as $product)
     <div class="card text-center margin">

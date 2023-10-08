@@ -3,18 +3,20 @@
 @section('content')
     
 
-
-<h2>Página de editar</h2>
 @if (session()->has('message'))
     {{session()->get('message')}}
 @endif
 <form action="{{route('products.update',['product' => $product->id])}}" method="post">
-        @csrf
-        <input type="hidden" name="_method" value="PUT">
-        <input type="text" name="nomeproduto" value="{{$product->nomeproduto}}">
-        <input type="text" name="preco" placeholder="R$:" value="{{$product->preco}}">
-        <input type="text" name="descricao" placeholder="R$:" value="{{$product->descricao}}">
-        <button type="submit">Atualizar</button>
+        <div class="form">
+            <h3>Editar dados</h3>
+            @csrf
+            <input type="hidden" name="_method" value="PUT">
+            <input type="text" name="nomeproduto" value="{{$product->nomeproduto}}">
+            <input type="text" name="preco" placeholder="R$:" value="{{$product->preco}}">
+            <textarea name="descricao" >{{$product->descricao}}</textarea>
+            <button type="submit">Atualizar</button>
+        </div>  
+        >
 </form>
 
 @endsection
