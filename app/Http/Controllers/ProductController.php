@@ -45,9 +45,9 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
-        //
+        return view(view:'product_edit', data:['product' => $product]);
     }
 
     /**
@@ -55,9 +55,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $updated = $this->product->where('id', $id)->update($request->except(['_token', '_method']));
+    
+        if ($updated) {
+            return redirect()->back()->with('message', 'Sucesso no update');
+        }
+    
+        return redirect()->back()->with('message', 'Erro no update');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */

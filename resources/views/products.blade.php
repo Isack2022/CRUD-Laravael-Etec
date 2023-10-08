@@ -1,12 +1,28 @@
 @extends('master')
 
+<div class="header">
+    <h2>Página de produtos</h2>
+</div>
+
+
 @section('content')
-    
-<h2>Página de produtos</h2>
 
 <ul>
     @foreach ($products as $product)
-       <li>{{$product->nomeproduto}}</li> 
+    <div class="card text-center margin">
+        <div class="card-body">
+          <h5 class="card-title">{{$product->nomeproduto}}</h5>
+          <img src="{{$product->imagem}}" alt="Imagem do produto" class="img">
+          <p class="card-text">{{$product->descricao}}</p>
+          <p class="card-text">
+            <a href="{{route('products.edit',['product' => $product->id])}}">Editar</a> | 
+            <a href="">Deletar</a>
+          </p>
+        </div>
+        <div class="card-footer text-body-secondary">
+            R$:{{$product->preco}}
+        </div>
+      </div>  
     @endforeach
 </ul>
 
