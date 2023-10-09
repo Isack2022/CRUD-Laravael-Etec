@@ -12,7 +12,8 @@
             @csrf
             <input type="hidden" name="_method" value="PUT">
             <input type="text" name="nomeproduto" value="{{$product->nomeproduto}}">
-            <input type="text" name="preco" placeholder="R$:" value="{{$product->preco}}">
+            <input type="text" name="preco"  value="{{$product->preco}}">
+            <input type="text" name="preco" value="{{$product->imagem}}">
             <textarea name="descricao" >{{$product->descricao}}</textarea>
             <button type="submit">Atualizar</button>
         </div>  

@@ -23,7 +23,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view(view:'product_create');
     }
 
     /**
@@ -31,7 +31,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $create = $this->product->create([
+            'nomeproduto' => $request->input(key:'nomeproduto'),
+            'preco' => $request->input(key:'preco'),
+            'descricao' => $request->input(key:'descricao'),
+            'imagem' => $request->input(key:'imagem'),
+        ]);
+
+
+        if ($create) {
+            return redirect()->back()->with('message', 'Cadastrado com sucesso!');
+        }
+    
+        return redirect()->back()->with('message', 'Erro no cadastro');
     }
 
     /**
